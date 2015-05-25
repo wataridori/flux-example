@@ -1,22 +1,22 @@
 var React = require('react');
-var VoteStores = require('../stores/VoteStores.jsx');
+var VoteStore = require('../stores/VoteStore.jsx');
 var VoteActions = require('../actions/VoteActions.jsx');
 
 var Main = React.createClass({
     getInitialState: function() {
-        return VoteStores.getVotes();
+        return VoteStore.getVotes();
     },
 
     componentDidMount: function() {
-        VoteStores.addChangeListener(this._onChange);
+        VoteStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
-        VoteStores.removeChangeListener(this._onChange);
+        VoteStore.removeChangeListener(this._onChange);
     },
 
     _onChange: function() {
-        this.setState(VoteStores.getVotes());
+        this.setState(VoteStore.getVotes());
     },
 
     _onVoteUpClick: function() {
@@ -46,11 +46,11 @@ var Main = React.createClass({
                         <div className="determinate" style={progressStyle}></div>
                     </div>
                     <div className="row">
-                        <a href="#!" className="left waves-effect waves-circle waves-light btn-floating secondary-content blue act-btn" onClick={this._onVoteUpClick}>
+                        <a href="#" className="left waves-effect waves-circle waves-light btn-floating secondary-content blue act-btn" onClick={this._onVoteUpClick}>
                             <i className="mdi-action-thumb-up"></i>
                         </a>
 
-                        <a href="#!" className="right waves-effect waves-circle waves-light btn-floating secondary-content blue act-btn" onClick={this._onVoteDownClick}>
+                        <a href="#" className="right waves-effect waves-circle waves-light btn-floating secondary-content blue act-btn" onClick={this._onVoteDownClick}>
                             <i className="mdi-action-thumb-down"></i>
                         </a>
                     </div>
