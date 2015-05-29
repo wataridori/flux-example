@@ -11,10 +11,6 @@ var Main = React.createClass({
         VoteStore.addChangeListener(this._onChange);
     },
 
-    componentWillUnmount: function() {
-        VoteStore.removeChangeListener(this._onChange);
-    },
-
     _onChange: function() {
         this.setState(VoteStore.getVotes());
     },
